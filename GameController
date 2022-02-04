@@ -1,0 +1,62 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class GameController : MonoBehaviour
+{
+    public static GameController Instance;
+
+    public GameObject pInicial;
+
+    public int  score;
+    public Text scoreText;
+
+     public Text serverScore;
+   
+
+    
+    // Start is called before the first frame update
+    void Awake(){
+    Instance =this;
+    PauseGame();
+
+   
+    
+     //enemyAudio = GetComponent<AudioSource>();
+}
+
+public void PauseGame ()
+    {
+         pInicial.SetActive (true);
+       
+        Time.timeScale = 0;Time.timeScale = 0;
+        
+
+    }
+
+public void ResumeGame ()
+    {
+       // SceneManager.LoadScene(1, LoadSceneMode.Single);
+        pInicial.SetActive (false);
+        Time.timeScale = 1;Time.timeScale = 1;
+        
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(2, LoadSceneMode.Single);
+    }
+
+     public void Achievements()
+    {
+        Playservice.instance.ShowAchievementUI();
+    }
+     public void LeaderBoard()
+    {
+        Playservice.instance.ShowLeaderBoard();
+    }
+
+
+}
